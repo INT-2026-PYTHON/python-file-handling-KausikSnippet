@@ -58,3 +58,31 @@ After sorting -> ['a', 'compare', 'i', 'to'].
 =================================================
 
 """
+
+filename1 = input("Enter sowpods file name: ")
+filename2 = input("Enter sonnet file name: ")
+
+# Step 1: Read sowpods into a set
+sowpods_set = set()
+
+with open(filename1, "r") as file:
+    for line in file:
+        word = line.strip().lower()
+        sowpods_set.add(word)              #add each word to sowpods_set
+
+# Step 2: Read sonnet words into another set
+sonnet_set = set()
+
+with open(filename2, "r") as file:
+    for line in file:
+        word = line.strip().lower()
+        sonnet_set.add(word)               #add each word to sonnet_set
+
+# Step 3: Find difference (words in sonnet but not in sowpods)
+result = sorted(sonnet_set - sowpods_set)
+
+# Step 4: Print output
+print("Words in sonnet but not in sowpods:")
+print(result)
+print("Total:", len(result))
+

@@ -40,3 +40,20 @@ Explanation:
 =================================================
 
 """
+
+filename = input("Enter file name: ")
+
+vowels = set("aeiou")
+count = 0
+
+with open(filename, "r") as file:
+    for line in file:
+        word = line.strip().lower()
+
+        # check if all vowels are present in the word by converting it to set
+        if vowels.issubset(set(word)):
+            print(word)
+            count += 1
+
+print("Total words with all vowels:", count)
+
