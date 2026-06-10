@@ -53,3 +53,29 @@ Sorted -> ['b', 'd', 'e', 'h', 'k', 'm', 'n',
 =================================================
 
 """
+
+appeared = set()
+doubled = set()
+
+filename = input("Enter file name: ")
+
+try:
+    with open(filename, "r") as file:   #r is for read mode
+        for word in file:
+            word = word.strip().lower()
+
+            for letter in word:
+                appeared.add(letter)      #each letter is getting added to the appeared set
+
+            for i in range(len(word) - 1):   #compare each letter with the next one
+                if word[i] == word[i + 1]:   #if they are the same, add to doubled set
+                    doubled.add(word[i])
+
+    result = sorted(appeared - doubled)
+
+    print("Letters never back-to-back:")
+    print(result)
+
+except FileNotFoundError:
+    print("File not found.")
+    

@@ -51,3 +51,21 @@ Explanation:
 =================================================
 
 """
+
+def is_palindrome(word):
+    return word == word[::-1]
+
+
+filename = input("Enter file name: ")
+
+count = 0
+
+with open(filename, "r") as file:
+    for line in file:
+        word = line.strip().lower()
+
+        if is_palindrome(word):
+            print(word)
+            count += 1
+
+print("Total palindromes:", count)
